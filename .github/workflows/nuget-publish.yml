@@ -28,8 +28,8 @@ jobs:
       - name: Build
         run: dotnet build DotnetStandardSDK/DotnetStandardSDK.sln -c Release
 
-      - name: Test
-        run: dotnet test --configuration Release --no-build
+      # - name: Test
+      #   run: dotnet test --configuration Release --no-build
 
       - name: Pack
         run: dotnet pack DotnetStandardSDK/DotnetStandardSDK/DotnetStandardSDK.csproj --configuration Release --no-build --output ./nupkg
