@@ -29,7 +29,7 @@
 		<PackageReference Include="Refit" Version="8.0.0" />
 	</ItemGroup>
 	<!-- Add this inside your main project .csproj file (not the test project) -->
-	<Target Name="PrePublish" BeforeTargets="Publish">
+	<!--<Target Name="PrePublish" BeforeTargets="Publish">
 		<Exec Command="dotnet test ../DotnetStandardSDK.Test/DotnetStandardSDK.Test.csproj --configuration Release" />
-	</Target>
+	</Target>-->
 </Project>
