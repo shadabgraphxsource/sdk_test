@@ -15,6 +15,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Clear NuGet cache
+        run: dotnet nuget locals all --clear
+
       - uses: actions/checkout@v4
 
       - name: Setup .NET
@@ -22,8 +25,8 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      # - name: Restore dependencies
-      #   run: dotnet restore DotnetStandardSDK/DotnetStandardSDK.sln
+      - name: Restore dependencies
+        run: dotnet restore DotnetStandardSDK/DotnetStandardSDK.sln
 
       - name: Build
         run: dotnet build DotnetStandardSDK/DotnetStandardSDK.sln -c Release
