@@ -1,0 +1,38 @@
+name: Build and Publish NuGet Package
+
+# on:
+#   push:
+#     tags:
+#       - 'v*.*.*' # Triggers on version tags like v1.0.0
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as necessary      
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore DotnetStandardSDK/DotnetStandardSDK.sln
+
+      - name: Build
+        run: dotnet build DotnetStandardSDK/DotnetStandardSDK.sln -c Release
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build
+
+      - name: Pack
+        run: dotnet pack DotnetStandardSDK/DotnetStandardSDK/DotnetStandardSDK.csproj --configuration Release --no-build --output ./nupkg
+
+      - name: Publish package to GitHub Packages
+        run: dotnet nuget push ./bin/Release/*.nupkg --source "GitHub" --api-key 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  

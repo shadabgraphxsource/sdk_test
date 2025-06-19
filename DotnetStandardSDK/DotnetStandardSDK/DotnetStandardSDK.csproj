@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>GraphXSDKClient</AssemblyName>
+		<PackageId>GraphXSDKClient</PackageId>
+		<OutputType>Library</OutputType>
+		<Authors>g7-solutions</Authors>
+		<Company>g7-solutions</Company>
+		<AssemblyTitle>GraphXSDKClient Library</AssemblyTitle>
+		<Description>This SDK you can use to place mockup, product line orders, and integerate it into you .Net application</Description>
+		<Copyright>No Copyright</Copyright>
+		<RootNamespace>GraphXSDKClient</RootNamespace>
+		<Version>1.0.0</Version>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\GraphXSDKClient.xml</DocumentationFile>
+		<RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>Minor update</PackageReleaseNotes>
+		<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>sdk, custom, library</PackageTags>
+	</PropertyGroup>	
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Refit" Version="8.0.0" />
+	</ItemGroup>
+	<!-- Add this inside your main project .csproj file (not the test project) -->
+	<Target Name="PrePublish" BeforeTargets="Publish">
+		<Exec Command="dotnet test ../DotnetStandardSDK.Test/DotnetStandardSDK.Test.csproj --configuration Release" />
+	</Target>
+</Project>

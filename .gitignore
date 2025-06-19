@@ -1,0 +1,54 @@
+# Ignore user-specific files and folders
+.vs/
+*.user
+*.suo
+
+# Ignore build output
+**/bin/
+**/obj/
+
+# Ignore Copilot and VS Code specific folders
+**/CopilotSnapshots/
+**/CopilotIndices/
+**/copilot-chat/
+
+# Ignore test results and logs
+**/TestStore/
+**/*.testlog
+**/TestResults/
+
+# Ignore cache and index files
+**/.dtbcache.*
+**/*.vsidx
+**/.futdcache.*
+**/*.cache
+
+# Ignore NuGet and MSBuild generated files
+*.nuget.g.targets
+*.nuget.g.props
+project.assets.json
+project.nuget.cache
+
+# Ignore generated files
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.CoreCompileInputs.cache
+*.FileListAbsolute.txt
+*.genruntimeconfig.cache
+*.GlobalUsings.g.cs
+*.sourcelink.json
+*.Up2Date
+
+# Ignore common DLLs, EXEs, and PDBs
+*.dll
+*.exe
+*.pdb
+*.deps.json
+*.runtimeconfig.json
+
+# Ignore resource files
+*.resources.dll
+
+# Ignore coverage and test artifacts
+CoverletSourceRootsMapping_*
