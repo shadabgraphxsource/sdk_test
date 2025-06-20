@@ -3,7 +3,13 @@ name: Build and Publish NuGet Package
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to the main branch
+
+permissions:
+  contents: read
+  packages: write  # Ensure the token can push packages
+  # Add permission for user info access
+  user: read # Adds permission for accessing user-related data
 
 jobs:
   build:
@@ -15,7 +21,7 @@ jobs:
 
       - name: Test GitHub Token Validity
         run: |
-          echo "Testing GitHub token validity..."
+          echo "Testing GitHub token validity... ${{ secrets.GITHUB_TOKEN }}"
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user
 
       - name: Setup .NET SDK
