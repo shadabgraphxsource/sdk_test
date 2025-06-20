@@ -21,7 +21,7 @@ jobs:
 
       - name: Test GitHub Token Validity
         run: |
-          echo "Testing GitHub token validity... ${{ secrets.GITHUB_TOKEN }}"
+          echo "Testing GitHub token validity... ${{ secrets.GITHUB_TOKEN }}" 
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user
 
       - name: Setup .NET SDK
