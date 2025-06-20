@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  packages: write  # Ensure the token can push packages
+  packages: write  # Ensure the token can push package
   # Add permission for user info access
   user: read # Adds permission for accessing user-related data
 
