@@ -3,17 +3,20 @@ name: Build and Publish NuGet Package
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - main
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Clear NuGet cache
-        run: dotnet nuget locals all --clear
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - uses: actions/checkout@v2
+      - name: Test GitHub Token Validity
+        run: |
+          echo "Testing GitHub token validity..."
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
@@ -32,18 +35,6 @@ jobs:
 
       - name: Pack the NuGet package
         run: dotnet pack ./DotnetStandardSDK/DotnetStandardSDK/DotnetStandardSDK.csproj --configuration Release --no-build --output ./nupkg
-
-      - name: List files in ./nupkg directory
-        run: dir ./nupkg
-
-      - name: Check if .nupkg file exists
-        run: |
-          if (Test-Path "./nupkg/*.nupkg") {
-            echo ".nupkg file found!"
-          } else {
-            echo ".nupkg file not found!"
-            exit 1
-          }
 
       - name: Publish the package to GitHub Packages
         run: dotnet nuget push ./nupkg/GraphXSDKClient.1.0.0.nupkg --source GitHubPackages --api-key ${{ secrets.GITHUB_TOKEN }}
