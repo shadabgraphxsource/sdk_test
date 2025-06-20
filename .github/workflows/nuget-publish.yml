@@ -36,5 +36,5 @@ jobs:
       - name: List files in ./nupkg directory
         run: dir ./nupkg  # Check if the .nupkg file is present
 
-      - name: Publish the package to GitHub Packages
-        run: dotnet nuget push D:/a/sdk_test/sdk_test/nupkg/GraphXSDKClient.1.0.0.nupkg --source GitHubPackages --api-key ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish the package to GitHub Packages 
+        run: dotnet nuget push D:/a/sdk_test/sdk_test/DotnetStandardSDK/DotnetStandardSDK/bin/Release/GraphXSDKClient.1.0.0.nupkg --source GitHubPackages --api-key ${{ secrets.GITHUB_TOKEN }}
