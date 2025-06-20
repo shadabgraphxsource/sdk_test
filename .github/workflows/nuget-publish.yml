@@ -1,10 +1,5 @@
 name: Build and Publish NuGet Package
 
-# on:
-#   push:
-#     tags:
-#       - 'v*.*.*' # Triggers on version tags like v1.0.0
-
 on:
   push:
     branches:
@@ -15,25 +10,23 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Clear NuGet cache
-        run: dotnet nuget locals all --clear
-
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-          
+
+      - name: Add GitHub Packages to NuGet sources
+        run: |
+          dotnet nuget add source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json -n GitHubPackages --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+
       - name: Restore dependencies
         run: dotnet restore DotnetStandardSDK/DotnetStandardSDK.sln
 
       - name: Build the solution
         run: dotnet build DotnetStandardSDK/DotnetStandardSDK.sln -c Release
-
-      # Uncomment if you want to run tests
-      # - name: Test the solution
-      #   run: dotnet test --configuration Release --no-build
 
       - name: Pack the NuGet package
         run: dotnet pack DotnetStandardSDK/DotnetStandardSDK/DotnetStandardSDK.csproj --configuration Release --no-build --output ./nupkg
