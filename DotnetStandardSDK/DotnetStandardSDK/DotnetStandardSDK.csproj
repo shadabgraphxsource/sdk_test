@@ -12,7 +12,7 @@
 		<Description>This SDK you can use to place mockup, product line orders, and integerate it into you .Net application</Description>
 		<Copyright>No Copyright</Copyright>
 		<RootNamespace>GraphXSDKClient</RootNamespace>
-		<Version>1.0.3</Version> 
+		<Version>1.0.4</Version> 
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\GraphXSDKClient.xml</DocumentationFile>
 		<RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
