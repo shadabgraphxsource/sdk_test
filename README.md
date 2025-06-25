@@ -50,7 +50,8 @@ dotnet add package GraphXSDKClient --version 1.0.0 --source "github"
 
 #### .NET Core / .NET 5+ Example
 
-1. **Register the SDK in your DI container (e.g., in `Program.cs`):**```csharp
+1. **Register the SDK in your DI container (e.g., in `Program.cs`):**
+```csharp
 using DotnetStandardSDK;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -61,8 +62,9 @@ await services.AddGraphXClientAsync(options =>
     options.Environment = EnvironmentType.Production; // or Development
         options.Key = "your-api-key";
     });
-    
-2. **Inject and use the client:**```csharp
+```    
+2. **Inject and use the client:**
+```csharp
 public class MyService
 {
     private readonly IGraphXClient _client;
@@ -79,7 +81,7 @@ public class MyService
         // handle result
     }
 }---
-
+```
 #### .NET Framework Example
 
 1. **Reference the NuGet package in your project.**
