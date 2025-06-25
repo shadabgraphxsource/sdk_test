@@ -25,7 +25,8 @@ Or via .NET CLI:
 
 ### .NET Core / .NET 5+ Example
 
-1. **Register the SDK in your DI container (e.g., in `Program.cs`):**```csharp
+1. **Register the SDK in your DI container (e.g., in `Program.cs`):**
+```csharp
 using DotnetStandardSDK;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -71,7 +72,7 @@ var client = await GraphXClient.BuildAsync(options);
 var request = new GetProductMockupRequestExternalRequest { /* set properties */ };
 var result = await client.Mockups.GetProductMockupRequestExternal(request);
 // handle result---
-
+```
 ## Features
 
 - Place mockup and product line orders

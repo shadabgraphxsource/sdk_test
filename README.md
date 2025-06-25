@@ -83,9 +83,11 @@ public class MyService
 #### .NET Framework Example
 
 1. **Reference the NuGet package in your project.**
-2. **Create and use the client:**```csharp
+```csharp
 using DotnetStandardSDK;
-
+```
+2. **Create and use the client:**
+```csharp
 var options = new GraphXClientOptions
 {
     Environment = EnvironmentType.Production,
@@ -96,6 +98,8 @@ var client = await GraphXClient.BuildAsync(options);
 var request = new GetProductMockupRequestExternalRequest { /* set properties */ };
 var result = await client.Mockups.GetProductMockupRequestExternal(request);
 // handle result---
+
+```
 
 ## Features
 
